@@ -63,5 +63,19 @@
 
 
 ```
+<h1>Projenin Postmanda Gösterilmesi</h1>
+<br>
 
-![Add user ](image.png) 
+![Get user](image1.png)
+<br>
+<br>
+![Get user](image2.png)
+<br>
+<br>
+![Get user](image3.png)
+<br>
+<br>
+![Get user](image4.png)
+
+
+
