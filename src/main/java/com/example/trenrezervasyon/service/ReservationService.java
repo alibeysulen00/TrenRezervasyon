@@ -19,6 +19,7 @@ public class ReservationService {
     private WagonRepository wagonRepository;
 
     public ReservationResponse checkReservation(ReservationRequest request) {
+        List<YerlesimAyrinti> yerlesimAyrintiList = new ArrayList<>();
         ReservationResponse response = new ReservationResponse();
         List<Wagon> availableWagons = new ArrayList<>();
         List<Wagon> allWagons = wagonRepository.findAll();
@@ -36,14 +37,14 @@ public class ReservationService {
 
             response.setRezervasyonYapilabilir(true);
 
-            List<YerlesimAyrinti> yerlesimAyrintiList = new ArrayList<>();
+
             int remainingPassengerCount = kisiSayisi;
 
             for (Wagon wagon : availableWagons) {
                 int passengersToPlace = 0;
                 int emptySeats = wagon.getCapacity() - wagon.getOccupiedSeats();
                 while (remainingPassengerCount >= 0) {
-                    // Calculate empty seats in wagon (capacity - occupiedSeats)
+
                     emptySeats = emptySeats - 1;
                     boolean isWagonAvailable = isCapacityAvailable(emptySeats, wagon.getCapacity());
 
@@ -63,8 +64,10 @@ public class ReservationService {
             }
             response.setYerlesimAyrinti(yerlesimAyrintiList);
         } else {
-            ////////////////////////////
-            response.setRezervasyonYapilabilir(false);
+
+            response.setYerlesimAyrinti(yerlesimAyrintiList);
+
+
         }
 
         return response;
